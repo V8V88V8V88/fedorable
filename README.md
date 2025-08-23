@@ -1,75 +1,261 @@
-# 🧹 Fedorable: Fedora Cleaning Script
+# Fedorable
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Fedora Version](https://img.shields.io/badge/Fedora-41+-blue.svg)](https://getfedora.org/)
+<div align="center">
 
-Fedorable is a command-line utility designed to maintain and optimize your Fedora Linux system. It automates common cleanup tasks to keep your Fedora installation efficient and well-maintained.
+**A powerful maintenance and optimization toolkit for Fedora Linux systems**
 
-## ✨ Features
-
-- **DNF5 Integration**: Utilizes the full capabilities of DNF5
-- **Comprehensive Cleaning**: Manages package caches, old kernels, and more
-- **System Safety**: Implements non-destructive operations with clear feedback
-- **Performance Optimization**: Improves system efficiency through targeted cleanup tasks
-
-## 🧼 Cleanup Tasks
-
-Fedorable performs the following cleanup operations:
-
-1. **Package List Update**: Refreshes the list of available packages.
-2. **Unused Package Removal**: Removes packages that were automatically installed as dependencies but are no longer required.
-3. **DNF Cache Cleaning**: Clears the DNF cache to free up disk space.
-4. **Old Kernel Removal**: Removes old kernel versions, keeping only the current and one previous version.
-5. **User Cache Cleaning**: Clears user-specific cache files from `/home/*/.cache/`.
-6. **System Journal Cleanup**: Removes old systemd journal logs.
-7. **Temporary File Removal**: Clears temporary files from `/tmp/`.
-8. **Orphaned Package Removal**: Removes packages that are no longer part of any repository.
-
-## 🛠 Installation
-
-1. Clone this repository:
-   ```
-   git clone https://github.com/yourusername/fedorable.git
-   cd fedorable
-   ```
-
-2. Make the script executable:
-   ```
-   chmod +x fedorable.sh
-   ```
-
-## 🚀 Usage
-
-Execute the script with sudo privileges:
-
-```
-sudo ./fedorable.sh
-```
-
-The script will guide you through the cleaning process, providing feedback at each step.
-
-## 🔧 Customization
-
-To customize the cleanup process, edit `fedorable.sh` in your preferred text editor. You can modify, add, or remove cleaning tasks as needed.
-
-## 🤝 Contributing
-
-Contributions are welcome, including bug reports, feature requests, and pull requests. Please refer to our [contribution guidelines](CONTRIBUTING.md) for more information.
-
-## 🔒 Security
-
-This script performs system-wide operations. Always review scripts that require sudo privileges before execution. While we prioritize system safety, user discretion is advised.
-
-## 📜 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🙌 Acknowledgements
-
-- The Fedora community
-- The DNF team for their robust package management tool
-- All users and contributors of this project
+</div>
 
 ---
 
-Enhance your Fedora system's performance with Fedorable. If you find this tool useful, please consider starring ⭐ the repository.
+## ✨ Overview
+
+Fedorable is a comprehensive system maintenance suite that keeps your Fedora installation clean, efficient, and well-maintained. The toolkit offers three seamless interfaces to match your workflow:
+
+- 🛠️ **Standalone Bash Script** - For quick maintenance operations
+- 💻 **Command-Line Interface** - For advanced control and automation
+- 🖥️ **Modern GTK4 GUI** - For user-friendly visual management
+
+---
+
+## 🚀 Core Features
+
+<details open>
+<summary><b>System Maintenance</b></summary>
+<br>
+
+| Feature | Description |
+|---------|-------------|
+| **System Updates** | Keep your packages up-to-date with the latest features and security patches |
+| **Package Cleanup** | Intelligently remove unused packages and dependencies to free up space |
+| **DNF Cache Management** | Reclaim valuable disk space from accumulated package caches |
+| **Old Kernel Removal** | Maintain only necessary kernel versions while preserving system stability |
+| **Temporary File Cleanup** | Remove unnecessary temporary files that accumulate over time |
+
+</details>
+
+<details open>
+<summary><b>System Optimization</b></summary>
+<br>
+
+| Feature | Description |
+|---------|-------------|
+| **Journal Management** | Control systemd journal size for better disk usage |
+| **RPM Database Optimization** | Improve package management performance and reliability |
+| **GRUB/Bootloader Updates** | Keep bootloader configuration current and optimized |
+| **SSD TRIM Support** | Maintain SSD performance and extend drive lifespan |
+| **Flatpak Management** | Clean and update Flatpak applications for better performance |
+| **Failed Unit Reset** | Automatically fix stuck systemd services for smoother operation |
+
+</details>
+
+---
+
+## 📦 Installation
+
+<details open>
+<summary><b>Dependencies</b></summary>
+<br>
+
+```bash
+# Install required dependencies on Fedora
+sudo dnf install python3-gobject gtk4 libadwaita
+```
+
+</details>
+
+<details open>
+<summary><b>Quick Install</b></summary>
+<br>
+
+```bash
+# Clone the repository
+git clone https://github.com/V8V88V8V88/fedorable.git
+cd fedorable
+
+# Make the script executable (for script-only usage)
+chmod +x fedorable.sh
+
+# Install the complete package with GUI and CLI
+pip install .
+```
+
+</details>
+
+---
+
+## 🔧 Usage
+
+<details open>
+<summary><b>Bash Script</b></summary>
+<br>
+
+The standalone bash script provides a simple way to perform system maintenance:
+
+```bash
+# Run with default settings (requires root privileges)
+sudo ./fedorable.sh
+
+# Show available options
+./fedorable.sh --help
+
+# Run with specific options
+sudo ./fedorable.sh --no-clean-temp --no-clean-kernels
+```
+
+</details>
+
+<details open>
+<summary><b>Command-Line Interface</b></summary>
+<br>
+
+The CLI offers more flexibility and control for advanced users and automation:
+
+```bash
+# View all available options
+fedorable-cli --help
+
+# Run all maintenance tasks
+fedorable-cli
+
+# Run with specific tasks enabled/disabled
+fedorable-cli --no-clean-temp --update --autoremove
+
+# Run in different modes
+fedorable-cli --yes --dry-run
+fedorable-cli --none --update --clean-dnf
+```
+
+</details>
+
+<details open>
+<summary><b>Graphical Interface</b></summary>
+<br>
+
+The GTK4 GUI provides the most user-friendly experience with real-time feedback:
+
+```bash
+# Launch the graphical application
+fedorable-gui
+```
+
+<div align="center">
+<i>Enjoy a beautiful, intuitive interface for managing your system maintenance</i>
+</div>
+
+</details>
+
+---
+
+## 📋 Maintenance Tasks
+
+Fedorable performs a comprehensive set of system maintenance operations:
+
+<table>
+  <tr>
+    <th align="left">Task</th>
+    <th align="left">Description</th>
+    <th align="center">Default</th>
+  </tr>
+  <tr>
+    <td><b>Update</b></td>
+    <td>Updates system packages with latest versions</td>
+    <td align="center">✅</td>
+  </tr>
+  <tr>
+    <td><b>Autoremove</b></td>
+    <td>Removes unused dependencies and packages</td>
+    <td align="center">✅</td>
+  </tr>
+  <tr>
+    <td><b>Clean DNF</b></td>
+    <td>Clears DNF package cache to free disk space</td>
+    <td align="center">✅</td>
+  </tr>
+  <tr>
+    <td><b>Clean Kernels</b></td>
+    <td>Removes old kernel versions safely</td>
+    <td align="center">✅</td>
+  </tr>
+  <tr>
+    <td><b>Clean Journal</b></td>
+    <td>Maintains systemd journal size within limits</td>
+    <td align="center">✅</td>
+  </tr>
+  <tr>
+    <td><b>Clean Temp</b></td>
+    <td>Removes unnecessary temporary files</td>
+    <td align="center">✅</td>
+  </tr>
+  <tr>
+    <td><b>Update GRUB</b></td>
+    <td>Updates bootloader configuration</td>
+    <td align="center">✅</td>
+  </tr>
+  <tr>
+    <td><b>Clean Flatpak</b></td>
+    <td>Maintains Flatpak applications and runtime</td>
+    <td align="center">✅</td>
+  </tr>
+  <tr>
+    <td><b>Optimize RPM DB</b></td>
+    <td>Improves package manager performance</td>
+    <td align="center">✅</td>
+  </tr>
+  <tr>
+    <td><b>Reset Failed Units</b></td>
+    <td>Fixes stuck systemd services</td>
+    <td align="center">✅</td>
+  </tr>
+  <tr>
+    <td><b>TRIM</b></td>
+    <td>Optimizes SSD performance</td>
+    <td align="center">✅</td>
+  </tr>
+</table>
+
+---
+
+## 💻 Development
+
+<details>
+<summary><b>Setting Up Development Environment</b></summary>
+<br>
+
+```bash
+# Set up a development environment
+git clone https://github.com/V8V88V8V88/fedorable.git
+cd fedorable
+pip install -e .
+
+# Run directly from source
+python fedorable-gui/src/main.py
+```
+
+</details>
+
+---
+
+## 🔒 Security
+
+Fedorable performs system-wide operations that require elevated privileges. Always review scripts before execution with sudo. While we prioritize system safety through careful coding practices and non-destructive operations, user discretion is advised.
+
+---
+
+## 👥 Contributing
+
+Contributions are welcome! Whether it's bug reports, feature requests, documentation improvements, or code contributions, your help makes Fedorable better for everyone.
+
+---
+
+## 📄 License
+
+This project is licensed under the MIT License.
+
+---
+
+<div align="center">
+
+**Keep your Fedora system clean and optimized with Fedorable!**
+
+</div>
